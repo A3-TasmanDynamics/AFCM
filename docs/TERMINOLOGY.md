@@ -12,6 +12,10 @@ Every entry is tagged with how confident the sourcing is:
   almost certainly applicable in an ADF context, but not confirmed against an ADF-specific
   published source. Safe to use for AFCM's fiction/UI; don't present as verified ADF doctrine
   without a real source.
+- **[NATO/US-common, ADF-adopted]** — the individual term/name itself isn't independently
+  ADF-published, but a genuine ADF source confirms the *framework it belongs to* is explicitly
+  used in Australian Army training (e.g. Combat First Aider training is built on the TCCC
+  handbook) — stronger footing than plain [NATO/US-common], short of a term ADF itself coined.
 - **[Gameplay-only]** — a term AFCM/AFCM-Simulator invented; not a real clinical/military term,
   flagged so it never gets mistaken for one in later docs.
 
@@ -37,32 +41,43 @@ Every entry is tagged with how confident the sourcing is:
 | **T3 / Green** | Delayed — needs treatment, but it can safely wait | **[NATO/US-common]** |
 | **T4 / Blue** | Expectant — unlikely to survive given available resources; treated if/when capacity allows, not abandoned | **[NATO/US-common]** |
 | **Dead / Black** | Deceased | **[NATO/US-common]** |
+| **"Priority-one casualty"** | Plain-language equivalent of T1/immediate, used in real Australian Army sourcing describing Role 2 Basic capacity ("can manage resuscitation for two priority-one casualties") | **[Confirmed]** — Australian Army Role 2 Basic capability description |
 
-> The military convention prefixes categories with **T** (T1–T4); the civilian/ambulance
-> convention uses **P** (P1–P3) instead. AFCM-Simulator's gameplay-facing "injury difficulty"
-> levels (Easy/Medium/Hard/Extreme/F*CKED!, see §6) are a **separate, gameplay-only** scale and
-> must not be presented as, or silently mapped onto, T1–T4 — they measure scenario-authoring
-> difficulty, not clinical urgency. If a future feature needs real triage categorisation (e.g. a
-> MASCAL sorting exercise), it should use T1–T4 explicitly rather than repurposing the difficulty
-> labels.
+> The strict **T1–T4** labelling itself is still **[NATO/US-common]**, not directly confirmed with
+> that exact prefix from an ADF source — what's confirmed is that the Australian Army uses
+> "priority" language for the same concept in practice. AFCM-Simulator's gameplay-facing "injury
+> difficulty" levels (Easy/Medium/Hard/Extreme/F*CKED!, see §10) are a **separate, gameplay-only**
+> scale and must not be presented as, or silently mapped onto, T1–T4/priority categories — they
+> measure scenario-authoring difficulty, not clinical urgency. If a future feature needs real
+> triage categorisation (e.g. a MASCAL sorting exercise), use T1–T4/priority language explicitly
+> rather than repurposing the difficulty labels.
 
 ## 3. Echelons of Care
 
 | Term | Definition | Status |
 |---|---|---|
 | **Role 1** | Point-of-injury first aid through Battalion Aid Station-level care — broadly analogous to prehospital EMS care | **[NATO/US-common]** |
-| **Role 2** | First echelon providing damage-control surgery, blood product transfusion, limited imaging/lab, combat/operational stress control | **[NATO/US-common]** |
+| **Role 2 Forward (R2F)** | Deployed furthest forward, in direct support of combat teams | **[Confirmed]** — Australian Army (Cove/defence.gov.au) |
+| **Role 2 Basic (R2B)** | Forward-deployable surgical capability (2nd Surgical Company): fits in two 6 m containers, can sit as far forward as a combat service support team, receives patients within an hour of set-up, full surgical capability within 3 hours. Manages resuscitation for **two priority-one casualties**, one patient in surgery, two ICU patients, five low-dependency beds | **[Confirmed]** — Australian Army |
+| **Role 2 Enhanced (R2E)** | Larger, rearward Role 2 facility: comprehensive trauma care, surgical interventions, ICU, lab diagnostics, imaging, short-term patient holding. Up to 4 days to establish | **[Confirmed]** — Australian Army |
 | **Role 3** | Full medical treatment facility — resuscitation, initial wound surgery, damage-control surgery, postoperative care | **[NATO/US-common]** |
+| **"Level 3"** (historical) | Older Australian Army terminology for roughly the Role 3 echelon, seen in older Army Journal material ("more than just 'Deploy the Level Three'") — current doctrine uses the NATO-aligned Role terminology above; flagged so old and new sourcing aren't confused for different things | **[Confirmed, superseded term]** |
+| **Combat First Aider (CFA)** | Non-medical-corps soldier qualified (12-day course) to provide point-of-injury care beyond standard first aid — explicitly built on the **TCCC handbook**, including needle thoracocentesis/decompression for tension pneumothorax and IV cannulation. Almost always the first responder at point of injury | **[Confirmed]** — Australian Army (Cove, JMVH) |
 
 ## 4. TCCC Phases & Assessment
 
+Australian Army Combat First Aider training is explicitly built on the TCCC handbook (§3), which
+upgrades this whole section from an assumed-applicable NATO framework to one with a real,
+citable Australian Army link — though the individual phase/mnemonic names themselves are still
+generic TCCC vocabulary rather than independently ADF-published terms.
+
 | Term | Definition | Status |
 |---|---|---|
-| **Care Under Fire (CUF)** | First TCCC phase — care rendered while still under effective hostile fire; priority is fire superiority and moving the casualty to cover | **[NATO/US-common]** |
-| **Tactical Field Care (TFC)** | Second phase — casualty and provider no longer under direct effective fire; more deliberate assessment/treatment | **[NATO/US-common]** |
-| **Tactical Evacuation Care (TACEVAC)** | Third phase — care rendered while preparing for and during evacuation | **[NATO/US-common]** |
-| **MARCH(E)** | Assessment/treatment priority order: **M**assive haemorrhage, **A**irway, **R**espiration, **C**irculation, **H**ypothermia/**H**ead injury, (**E**vacuation) | **[NATO/US-common]** |
-| **PAWS** | Secondary-assessment extension to MARCH in Tactical Field Care: **P**ain management, **A**ntibiotics, **W**ounds, **S**plinting | **[NATO/US-common]** |
+| **Care Under Fire (CUF)** | First TCCC phase — care rendered while still under effective hostile fire; priority is fire superiority and moving the casualty to cover | **[NATO/US-common, ADF-adopted]** |
+| **Tactical Field Care (TFC)** | Second phase — casualty and provider no longer under direct effective fire; more deliberate assessment/treatment | **[NATO/US-common, ADF-adopted]** |
+| **Tactical Evacuation Care (TACEVAC)** | Third phase — care rendered while preparing for and during evacuation | **[NATO/US-common, ADF-adopted]** |
+| **MARCH(E)** | Assessment/treatment priority order: **M**assive haemorrhage, **A**irway, **R**espiration, **C**irculation, **H**ypothermia/**H**ead injury, (**E**vacuation) | **[NATO/US-common, ADF-adopted]** |
+| **PAWS** | Secondary-assessment extension to MARCH in Tactical Field Care: **P**ain management, **A**ntibiotics, **W**ounds, **S**plinting | **[NATO/US-common, ADF-adopted]** |
 
 ## 5. Clinical / Physiology Terms
 

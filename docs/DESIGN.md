@@ -219,12 +219,22 @@ AFCM/
 5. **UI approach** — same native-dialog-first decision AFCM-Simulator made applies here by default,
    but worth confirming AFCM's own treatment UI (`afcm_ui`) is in scope for this repo rather than
    assumed to be supplied by AFCM-Simulator.
-6. **Terminology accuracy vs. marketing framing** — TERMINOLOGY.md only independently confirms one
-   piece of AFCM-specific ADF doctrine (the CASEVAC/MEDEVAC platform-protection distinction, from a
-   JMVH article). The triage categories, Role 1/2/3, MARCH/PAWS, 9-Liner, and MIST report are all
-   flagged there as **[NATO/US-common]**, not confirmed ADF-published — near-certainly applicable,
-   but the README's "authentic ADF and RAAMC trauma doctrine" framing should either get a real ADF
-   source for these before shipping, or soften the claim to "NATO-aligned" where unconfirmed.
+6. **Terminology accuracy vs. marketing framing** — **updated, stronger than first drafted.**
+   A follow-up pass checking official/near-official ADF sources (defence.gov.au, army.gov.au, The
+   Cove, JMVH) confirmed real Australian Army sourcing for: CASEVAC/MEDEVAC (platform-protection
+   distinction), **Role 2 Basic / Role 2 Enhanced / Role 2 Forward** (with real capability figures
+   — see TERMINOLOGY.md §3), and **Combat First Aider (CFA)** — a real 12-day-course qualification
+   explicitly built on the TCCC handbook, which also upgrades TCCC/MARCH/PAWS from "assumed
+   applicable" to "confirmed ADF-adopted framework." Still unconfirmed from a public source: the
+   exact T1–T4 triage prefix (Australian Army sourcing uses "priority-one casualty" phrasing
+   instead — TERMINOLOGY.md §2), the 9-Liner and MIST report formats, and Role 1/Role 3 by name
+   (only Role 2's sub-variants turned up detail). Named-but-inaccessible doctrine publications
+   (ADFP 53, ADDP 1.3, ADDP 3.20 — REFERENCES.md) may resolve the remaining gaps if anyone can
+   access them through Defence channels; direct fetches of army.gov.au/cove pages were unreliable
+   during this research pass (timeouts/connection resets) and are worth manually re-checking.
+   Net: the README's "ADF and RAAMC trauma doctrine" framing now has real backing for its core
+   claims (echelons of care, point-of-injury role, TCCC basis) — the remaining unconfirmed items
+   are specific formats/labels, not the doctrine framing itself.
 7. **Cardiac rhythm / defibrillation scope** — §2.2 adds `cardiac_rhythm`/`shockable` to
    `PatientState` and a LIFEPAK-15-modelled monitor/defibrillator interaction, but this is new
    scope not yet sized against the phased roadmap (§9) — needs a call on whether it's a v2

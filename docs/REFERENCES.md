@@ -34,12 +34,24 @@ per DESIGN.md §8.
 | [Royal Australian Army Medical Corps — Australian Army](https://www.army.gov.au/about-us/army-corps/royal-australian-army-medical-corps) | RAAMC role/structure overview — starting point, not a clinical-doctrine document itself |
 | [Australian Tactical Medical Association (ATMA) — Tactical Combat Casualty Care](https://atma.net.au/page-1075474) | Australian-context TCCC — closest public source for how US TCCC doctrine (care-under-fire / tactical-field-care / tactical-evacuation phases) is applied in an Australian tactical-medicine context |
 | [Journal of Military and Veterans' Health (JMVH)](https://jmvh.org/) | Peer-reviewed Australian military medicine journal — search here for ADF-specific trauma, CBRN, and field-care articles (e.g. its Military Health Support and CBRN Defence pieces) rather than generic TCCC sources |
+| [JMVH — Casualty Evacuation in the Australian Defence Force](https://jmvh.org/article/casualty-evacuation-in-the-australian-defence-force/) | Source for the confirmed CASEVAC/MEDEVAC platform-protection distinction and casualty regulation (TERMINOLOGY.md §1) |
+| [JMVH — Treatment at Point of Injury: A Proposal for an Enhanced Combat First Aider and Health Technician Skillset](https://jmvh.org/article/https-doi-ds-org-doilink-03-2023-24814268-jmvh-vol-31-no-1/) | Directly on-topic for AFCM's point-of-injury model — Combat First Aider scope/skillset discussion |
+| [The Cove (Australian Army) — Development of the Role 2 Basic](https://cove.army.gov.au/article/development-role-2-basic) | Source for the confirmed Role 2 Basic/Enhanced/Forward capability details (TERMINOLOGY.md §3) |
+| [The Cove (Australian Army) — Our Combat Recovery Capability](https://cove.army.gov.au/article/our-combat-recovery-capability) | Echelon-of-care and Combat First Aider requirement description |
+| [The Cove (Australian Army) — CTC Live Fight to Win Series: Combat First Aid](https://cove.army.gov.au/article/ctc-live-fight-win-series-combat-first-aid) | Combat first aid training context |
+| [Defence.gov.au — Military English lesson: MEDEVAC](https://ditc.defence.gov.au/sites/default/files/2023-08/Mil%20Eng%20-%20Lesson%20-%20Reading%20-%20MEDEVAC%20-%20Students%20Copy.pdf) | ADF Defence International Training Centre teaching material defining MEDEVAC — direct-fetch kept timing out during research, worth a manual read |
+| [Australian Army Research Centre — Health Support to Complex Warfighting](https://researchcentre.army.gov.au/library/australian-army-journal-aaj/volume-4-number-2/health-support-complex-warfighting-more-just-deploy-level-three) | Source for the older "Level 3" terminology note (TERMINOLOGY.md §3) |
 | [Tactical Combat Casualty Care — overview](https://en.wikipedia.org/wiki/Tactical_Combat_Casualty_Care) | Background/overview only — use as an index into primary TCCC guideline documents, not as a citable source itself |
 
 > No public, freely-accessible ADF-P-Health doctrine publication or RAAMC clinical practice manual
-> turned up in search — these are almost certainly internal/restricted-distribution documents.
-> If anyone on the team has serving/ex-ADF medic access to the real doctrine, that's a materially
-> better source than anything public listed here for the "ADF Protocol Accuracy" pillar.
+> turned up in search — these are almost certainly internal/restricted-distribution documents. An
+> Australian Defence Force Publication **ADFP 53 "Health Support"** and Australian Defence Doctrine
+> Publications **ADDP 1.3** ("Mental Health and Psychology Support to Operations") and **ADDP
+> 3.20** ("The Military Contribution to Humanitarian Operations") were confirmed to exist by name
+> via search, but no accessible full text was found — noted for the record in case someone can
+> access them through Defence channels. If anyone on the team has serving/ex-ADF medic access to
+> the real doctrine, that's a materially better source than anything public listed here for the
+> "ADF Protocol Accuracy" pillar.
 
 ---
 

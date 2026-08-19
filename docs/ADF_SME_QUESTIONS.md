@@ -86,6 +86,6 @@ citations: [TERMINOLOGY.md](TERMINOLOGY.md). Design doc with the "why" behind ea
 <div align="center">
 
 **Tasman Dynamics** — Engineering high-fidelity systems for the future of multi-domain simulation.
-[Discord](https://discord.gg/RmCkSuSHRa) · [AFCM-Simulator](https://github.com/A3-TasmanDynamics/AFCM-Simulator)
+[Discord](https://discord.gg/Wt4ahmxVrs) · [AFCM-Simulator](https://github.com/A3-TasmanDynamics/AFCM-Simulator)
 
 </div>

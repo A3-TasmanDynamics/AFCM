@@ -6,7 +6,7 @@
 [![Platform: Arma 3](https://img.shields.io/badge/platform-Arma%203-4b5d3a)](https://arma3.com/)
 [![Requires CBA_A3](https://img.shields.io/badge/requires-CBA__A3-4b5d3a)](https://github.com/CBATeam/CBA_A3)
 [![Status: Design Phase](https://img.shields.io/badge/status-design%20phase-8a7a3a)](docs/DESIGN.md)
-[![Discord](https://img.shields.io/badge/Discord-Join-5865F2?logo=discord&logoColor=white)](https://discord.gg/RmCkSuSHRa)
+[![Discord](https://img.shields.io/badge/Discord-Join-5865F2?logo=discord&logoColor=white)](https://discord.gg/Wt4ahmxVrs)
 
 </div>
 
@@ -105,6 +105,6 @@ Released under the [Arma Public License Share Alike (APL-SA)](https://www.bohemi
 
 <div align="center">
 
-Questions or want to help ground the doctrine in the real thing? [Join the Tasman Dynamics Discord](https://discord.gg/RmCkSuSHRa).
+Questions or want to help ground the doctrine in the real thing? [Join the Tasman Dynamics Discord](https://discord.gg/Wt4ahmxVrs).
 
 </div>

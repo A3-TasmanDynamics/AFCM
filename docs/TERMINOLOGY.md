@@ -176,6 +176,6 @@ Keeps code/docs/UI consistent — see AFCM DESIGN.md for full definitions, this 
 <div align="center">
 
 **Tasman Dynamics** — Engineering high-fidelity systems for the future of multi-domain simulation.
-[Discord](https://discord.gg/RmCkSuSHRa) · [AFCM-Simulator](https://github.com/A3-TasmanDynamics/AFCM-Simulator)
+[Discord](https://discord.gg/Wt4ahmxVrs) · [AFCM-Simulator](https://github.com/A3-TasmanDynamics/AFCM-Simulator)
 
 </div>

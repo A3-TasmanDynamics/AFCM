@@ -195,18 +195,22 @@ repo. With AFCM now existing as a standalone engine:
 ```
 AFCM/
   addons/
-    afcm_main/            # CfgPatches root, CBA requirement, shared macros/constants
-    afcm_physiology/       # Lethal Triad engine: temp, acid-base, coagulopathy, bleed-rate derivation,
-                            # + cardiac rhythm / shockable-rhythm derivation (§2.2)
-    afcm_pharmacology/     # drug catalog, pharmacokinetics, interactions (depends on afcm_physiology)
-    afcm_airway/            # positional airway occlusion model (depends on afcm_physiology)
-    afcm_neuro/              # GCS derivation, consciousness, comms-suppression hook point
-    afcm_stress/             # medic stress/performance matrix (depends on afcm_neuro for shared state patterns)
-    afcm_ui/                  # AFCM's own treatment interaction UI (native dialogs / ACE-interaction-menu-style),
-                              # + LIFEPAK-15-modelled monitor/defibrillator interaction (§2.2)
+    main/            # afcm_main — CfgPatches root, CBA requirement, shared macros/constants
+    physiology/      # afcm_physiology — Lethal Triad engine: temp, acid-base, coagulopathy,
+                      # bleed-rate derivation, + cardiac rhythm / shockable-rhythm derivation (§2.2)
+    pharmacology/    # afcm_pharmacology — drug catalog, pharmacokinetics, interactions (depends on afcm_physiology)
+    airway/          # afcm_airway — positional airway occlusion model (depends on afcm_physiology)
+    neuro/           # afcm_neuro — GCS derivation, consciousness, comms-suppression hook point
+    stress/          # afcm_stress — medic stress/performance matrix (depends on afcm_neuro for shared state patterns)
+    ui/              # afcm_ui — AFCM's own treatment interaction UI (native dialogs / ACE-interaction-menu-style),
+                      # + LIFEPAK-15-modelled monitor/defibrillator interaction (§2.2)
   docs/
     DESIGN.md                # this file
 ```
+
+Folder names on disk are bare (`main`, `physiology`, ...) per standard HEMTT/ACE3-style convention
+— HEMTT prepends the project prefix (`afcm`) automatically to produce each PBO. The full `afcm_*`
+name is still each addon's `CfgPatches` class name and the name used everywhere else in this doc.
 
 ---
 

@@ -125,7 +125,21 @@ Keeps code/docs/UI consistent — see AFCM DESIGN.md for full definitions, this 
 | **Native path** | Interactions that go through AFCM's own `PatientState` API directly |
 | **Compat mode** | The optional `afcm_sim_compat` bridge (AFCM-Simulator) that translates into ACE3/KAT calls for servers not running AFCM |
 
-## 9. AFCM-Simulator Terminology
+## 9. Equipment / Devices
+
+| Term | Definition | Status |
+|---|---|---|
+| **LIFEPAK 15** | Monitor/defibrillator by Physio-Control (a Stryker company) — AFCM's reference device for any cardiac-arrest/defibrillation mechanic. Widely used across Australian ambulance services, making it the practical "Aussie standard" reference even without an ADF-specific procurement source confirmed | **[Confirmed]** — manufacturer data sheet, [stryker.com](https://www.stryker.com/us/en/emergency-care/products/lifepak-15.html) |
+| **AED mode** | Automated ECG analysis with a prompted treatment protocol for cardiac arrest — the device analyses the rhythm and advises shock/no-shock | **[Confirmed]** — LIFEPAK 15 data sheet |
+| **Manual mode** | Operator-controlled defibrillation, synchronized cardioversion, noninvasive pacing, and ECG/vital-sign monitoring — the mode relevant for a trained-medic AFCM interaction (vs. an AED-style prompted flow) | **[Confirmed]** — LIFEPAK 15 data sheet |
+| **Shockable rhythm** | A cardiac rhythm (e.g. ventricular fibrillation, pulseless ventricular tachycardia) that defibrillation can potentially convert back to a perfusing rhythm | **[NATO/US-common]** — standard resuscitation terminology, not device-specific |
+| **Unshockable rhythm** | A rhythm (e.g. asystole, pulseless electrical activity) that defibrillation cannot correct — the Calcium Triangle's signature failure mode (AFCM DESIGN.md §2.2): a volume-resuscitated patient can still arrest into an unshockable rhythm if hypocalcemia isn't corrected, and no amount of shocking will fix that | **[NATO/US-common]** |
+| **Biphasic (escalating energy, up to 360J)** | Defibrillation waveform type; escalating energy improves conversion odds on difficult-to-defibrillate patients | **[Confirmed]** — LIFEPAK 15 data sheet |
+| **Synchronized cardioversion** | A timed shock delivered in sync with the patient's own QRS complex, used for certain non-arrest unstable rhythms rather than a chaotic-rhythm defibrillation shock | **[Confirmed]** — LIFEPAK 15 data sheet |
+| **Noninvasive (transcutaneous) pacing** | Pacing the heart via skin electrodes rather than an implanted lead — a LIFEPAK 15 manual-mode function | **[Confirmed]** — LIFEPAK 15 data sheet |
+| **12-lead ECG** | Standard 12-electrode-view electrocardiogram — the LIFEPAK 15 monitors all 12 leads continuously and flags significant ST-segment change | **[Confirmed]** — LIFEPAK 15 data sheet |
+
+## 10. AFCM-Simulator Terminology
 
 | Term | Meaning | Status |
 |---|---|---|

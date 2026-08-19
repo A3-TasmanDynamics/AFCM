@@ -54,6 +54,27 @@ than a flat "apply = fixed effect" item action. Confirmed from the brief:
 | **Fentanyl lozenges** | Transmucosal opioid — slower onset than IV, respiratory depression risk at higher effective dose, interacts with the neuro/GCS model (§2.3) |
 | **Calcium Gluconate** | Not an analgesic — corrects the **Calcium Triangle**: massive transfusion (large-volume blood product administration) causes citrate-driven hypocalcemia, and hypocalcemia at depth causes cardiac contractility failure independent of volume status. A medic who transfuses aggressively without correcting calcium can push a *volume-resuscitated* patient into unshockable arrest — this is the pillar's signature "you did the obvious thing and it wasn't enough" moment |
 
+**Reference defibrillator: LIFEPAK 15.** The Calcium Triangle's payoff only lands if
+"unshockable" is a real mechanic, not just flavour text — the patient goes into cardiac arrest,
+gets hooked up to a monitor/defibrillator, and the device tells the medic whether the rhythm is
+shockable. **LIFEPAK 15** (Physio-Control/Stryker) is the reference device: it's the monitor/
+defibrillator standard across Australian ambulance services, so it's the practical choice for
+"Aussie standard" even without a confirmed ADF-specific procurement source. Relevant modelled
+behaviour (TERMINOLOGY.md §9, sourced from the manufacturer data sheet):
+- **AED mode** (automated rhythm analysis, prompted shock/no-shock) vs. **Manual mode**
+  (operator reads the rhythm and decides) — AFCM should model Manual mode, consistent with a
+  trained-medic simulation rather than a bystander-AED one.
+- **Shockable vs. unshockable rhythm** as the actual gate on whether defibrillation can do
+  anything — a Calcium-Triangle-driven arrest should present as unshockable, so shocking it
+  repeatedly doesn't work and only correcting calcium does.
+- **Escalating biphasic energy (up to 360J)**, **noninvasive pacing**, and **12-lead ECG/ST
+  monitoring** are real LIFEPAK 15 capabilities worth keeping available as interactions even if
+  the Calcium Triangle scenario is the headline use case — a full arrest/cardiac-monitoring loop
+  is more reusable than a single scripted moment.
+- This is new physiology-engine scope (a cardiac rhythm state on `PatientState`, §3, and a
+  monitor/defibrillator interaction in `afcm_ui`) — not yet reflected in the repo layout (§7) or
+  phased roadmap (§9) below; flagged here so it doesn't get lost before those sections are revised.
+
 Each drug needs an explicit interaction/contraindication table (e.g., stacking two respiratory
 depressants) before implementation — not just an isolated effect curve per drug.
 
@@ -91,7 +112,9 @@ PatientState = {
     gcs: { eye: 1..4, verbal: 1..5, motor: 1..6 },
     airway_patency:      Number,   // 0..1
     active_drugs: [ { agent, dose, administeredAt, route } ],
-    bleeds: [ { site, rate, external: Bool } ]   // rate is itself a function of coag_factor, not fixed at wound time
+    bleeds: [ { site, rate, external: Bool } ],  // rate is itself a function of coag_factor, not fixed at wound time
+    cardiac_rhythm: Enum,       // e.g. perfusing / VF / pulseless-VT / PEA / asystole — derived, not directly set
+    shockable: Bool             // derived from cardiac_rhythm; gates whether LIFEPAK-style defibrillation can act
 }
 
 MedicState = {
@@ -162,12 +185,14 @@ repo. With AFCM now existing as a standalone engine:
 AFCM/
   addons/
     afcm_main/            # CfgPatches root, CBA requirement, shared macros/constants
-    afcm_physiology/       # Lethal Triad engine: temp, acid-base, coagulopathy, bleed-rate derivation
+    afcm_physiology/       # Lethal Triad engine: temp, acid-base, coagulopathy, bleed-rate derivation,
+                            # + cardiac rhythm / shockable-rhythm derivation (§2.2)
     afcm_pharmacology/     # drug catalog, pharmacokinetics, interactions (depends on afcm_physiology)
     afcm_airway/            # positional airway occlusion model (depends on afcm_physiology)
     afcm_neuro/              # GCS derivation, consciousness, comms-suppression hook point
     afcm_stress/             # medic stress/performance matrix (depends on afcm_neuro for shared state patterns)
-    afcm_ui/                  # AFCM's own treatment interaction UI (native dialogs / ACE-interaction-menu-style)
+    afcm_ui/                  # AFCM's own treatment interaction UI (native dialogs / ACE-interaction-menu-style),
+                              # + LIFEPAK-15-modelled monitor/defibrillator interaction (§2.2)
   docs/
     DESIGN.md                # this file
 ```
@@ -200,6 +225,12 @@ AFCM/
    flagged there as **[NATO/US-common]**, not confirmed ADF-published — near-certainly applicable,
    but the README's "authentic ADF and RAAMC trauma doctrine" framing should either get a real ADF
    source for these before shipping, or soften the claim to "NATO-aligned" where unconfirmed.
+7. **Cardiac rhythm / defibrillation scope** — §2.2 adds `cardiac_rhythm`/`shockable` to
+   `PatientState` and a LIFEPAK-15-modelled monitor/defibrillator interaction, but this is new
+   scope not yet sized against the phased roadmap (§9) — needs a call on whether it's a v2
+   (Calcium Triangle needs it to have teeth) or v3+ item, and whether AED-mode-style guided
+   defibrillation is worth building at all if AFCM is targeting trained-medic play (Manual mode
+   only, per TERMINOLOGY.md §9).
 
 ---
 
@@ -209,7 +240,9 @@ AFCM/
 - **v1** — `afcm_physiology` core loop (temp/acidosis/coagulopathy feedback, derived bleed rate),
   server-authoritative sync, no pharmacology yet.
 - **v2** — `afcm_pharmacology` (Ketamine, Penthrox, Fentanyl, Calcium Gluconate + Calcium Triangle
-  interaction with transfusion).
+  interaction with transfusion) + `cardiac_rhythm`/`shockable` state and LIFEPAK-15-modelled
+  manual-mode defibrillation, so the Calcium Triangle's "unshockable arrest" payoff is a real
+  mechanic rather than narrative text (open question §8.7 — sizing/scope still needs a call).
 - **v3** — `afcm_airway` + `afcm_neuro` (GCS derivation, positional airway model).
 - **v4** — `afcm_stress` (medic performance matrix) + TFAR/ACRE2 comms-suppression integration.
 - **Parallel** — AFCM-Simulator's injury-application path migrates from placeholder/ACE-bridge to

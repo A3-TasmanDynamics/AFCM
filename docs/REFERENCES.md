@@ -60,6 +60,13 @@ Lethal Triad thresholds in `afcm_physiology`.
 
 ---
 
+## Equipment / devices
+
+| Source | Use for |
+|---|---|
+| [Stryker — LIFEPAK 15 product page](https://www.stryker.com/us/en/emergency-care/products/lifepak-15.html) | Official manufacturer page — reference device for AFCM's cardiac-arrest/defibrillation mechanic (DESIGN.md §2.2). Widely deployed across Australian ambulance services |
+| [Stryker — LIFEPAK 15 data sheet (PDF)](https://www.stryker.com/content/dam/stryker/ems/products/lifepak-15/us/documents/lifepak_15_data_sheet.pdf) | Primary source for modes (AED/Manual/Pacing), energy levels (escalating biphasic to 360J), and monitoring features — used directly in TERMINOLOGY.md §9 |
+
 ## Medical education (grounding/ramp-up, not primary sourcing)
 
 | Source | Use for |

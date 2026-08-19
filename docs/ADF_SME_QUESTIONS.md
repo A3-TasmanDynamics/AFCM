@@ -1,3 +1,11 @@
+<div align="center">
+
+<img src="assets/doc-header.svg" alt="AFCM Documentation" width="100%"/>
+
+[README](../README.md) · [Design](DESIGN.md) · [Terminology](TERMINOLOGY.md) · [References](REFERENCES.md) · **ADF SME Questions**
+
+</div>
+
 # Questions for ADF/RAAMC SME Review
 
 This is a standalone list — meant to be handed directly to a serving or ex-serving ADF member
@@ -72,3 +80,12 @@ the relevant sections of, that would replace a lot of the guesswork above with a
 *Full source list for everything above: [REFERENCES.md](REFERENCES.md). Full glossary with
 citations: [TERMINOLOGY.md](TERMINOLOGY.md). Design doc with the "why" behind each system:
 [DESIGN.md](DESIGN.md).*
+
+---
+
+<div align="center">
+
+**Tasman Dynamics** — Engineering high-fidelity systems for the future of multi-domain simulation.
+[Discord](https://discord.gg/RmCkSuSHRa) · [AFCM-Simulator](https://github.com/A3-TasmanDynamics/AFCM-Simulator)
+
+</div>

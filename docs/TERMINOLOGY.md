@@ -1,3 +1,11 @@
+<div align="center">
+
+<img src="assets/doc-header.svg" alt="AFCM Documentation" width="100%"/>
+
+[README](../README.md) · [Design](DESIGN.md) · **Terminology** · [References](REFERENCES.md) · [ADF SME Questions](ADF_SME_QUESTIONS.md)
+
+</div>
+
 # Terminology & Callings
 
 Canonical glossary for AFCM and AFCM-Simulator — clinical terms, tactical-medicine doctrine terms,
@@ -162,3 +170,12 @@ Keeps code/docs/UI consistent — see AFCM DESIGN.md for full definitions, this 
 | **Injury preset** | A named, reusable, pre-authored set of injuries applicable to a spawned patient | **[Gameplay-only]** |
 | **Injury level** (Easy/Medium/Hard/Extreme/F*CKED!) | AFCM-Simulator's randomization-difficulty scale — **not** a triage category, see the §2 warning | **[Gameplay-only]** |
 | **Random Patient** | One-action spawn of a unit with randomized identity/loadout and randomized injury set | **[Gameplay-only]** |
+
+---
+
+<div align="center">
+
+**Tasman Dynamics** — Engineering high-fidelity systems for the future of multi-domain simulation.
+[Discord](https://discord.gg/RmCkSuSHRa) · [AFCM-Simulator](https://github.com/A3-TasmanDynamics/AFCM-Simulator)
+
+</div>

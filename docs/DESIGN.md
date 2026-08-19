@@ -1,3 +1,11 @@
+<div align="center">
+
+<img src="assets/doc-header.svg" alt="AFCM Documentation" width="100%"/>
+
+[README](../README.md) · **Design** · [Terminology](TERMINOLOGY.md) · [References](REFERENCES.md) · [ADF SME Questions](ADF_SME_QUESTIONS.md)
+
+</div>
+
 # AFCM — Design Doc
 
 Status: **Draft v0.1** — pre-implementation. Nothing in this doc is committed to code yet.
@@ -260,3 +268,12 @@ AFCM/
 - **v4** — `afcm_stress` (medic performance matrix) + TFAR/ACRE2 comms-suppression integration.
 - **Parallel** — AFCM-Simulator's injury-application path migrates from placeholder/ACE-bridge to
   AFCM's native API as each subsystem lands.
+
+---
+
+<div align="center">
+
+**Tasman Dynamics** — Engineering high-fidelity systems for the future of multi-domain simulation.
+[Discord](https://discord.gg/RmCkSuSHRa) · [AFCM-Simulator](https://github.com/A3-TasmanDynamics/AFCM-Simulator)
+
+</div>

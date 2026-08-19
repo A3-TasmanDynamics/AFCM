@@ -1,3 +1,11 @@
+<div align="center">
+
+<img src="assets/doc-header.svg" alt="AFCM Documentation" width="100%"/>
+
+[README](../README.md) · [Design](DESIGN.md) · [Terminology](TERMINOLOGY.md) · **References** · [ADF SME Questions](ADF_SME_QUESTIONS.md)
+
+</div>
+
 # Clinical & Medical References
 
 Source material for grounding AFCM's physiology, pharmacology, and trauma-doctrine claims in real
@@ -102,3 +110,12 @@ Lethal Triad thresholds in `afcm_physiology`.
 Anything pulled from a source above and used to set a concrete value in config should get a short
 citation comment at the point of use (source + guideline/section, not just a link dump) — makes it
 possible to revisit if the guideline updates.
+
+---
+
+<div align="center">
+
+**Tasman Dynamics** — Engineering high-fidelity systems for the future of multi-domain simulation.
+[Discord](https://discord.gg/RmCkSuSHRa) · [AFCM-Simulator](https://github.com/A3-TasmanDynamics/AFCM-Simulator)
+
+</div>

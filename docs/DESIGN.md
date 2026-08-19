@@ -5,6 +5,9 @@ Owner: Tasman Dynamics
 Depends on: CBA_A3
 Soft-integrates with: TFAR or ACRE2 (optional — voice suppression hook only, not a hard dependency)
 Consumed by: AFCM-Simulator (scenario authoring/UI tool — see that repo's own DESIGN.md)
+Terminology: [docs/TERMINOLOGY.md](TERMINOLOGY.md) — canonical definitions for every clinical,
+tactical-medicine, and radio-callings term used below; use it rather than re-defining terms
+ad hoc in future doc updates.
 
 ---
 
@@ -61,12 +64,13 @@ Three sub-features under one pillar, split into two subsystems:
   vs. recovery position vs. seated), obstruction sources (blood, vomit, tongue in an unconscious
   casualty), and intervention (recovery position, airway adjuncts). This is a physical/positional
   simulation, not a checkbox item.
-- **GCS-based neurological system** (`afcm_neuro`) — tracks eye/verbal/motor response as an actual
-  derived state (from blood loss, hypoxia from airway compromise, head injury, drug effects — e.g.
-  ketamine dissociation or fentanyl sedation lowering verbal/eye score), and **that GCS state
-  suppresses voice projection through TFAR/ACRE2** when integrated — a patient with a depressed
-  verbal score should be mechanically unable to communicate clearly over radio/proximity voice,
-  not just visually tagged as "unconscious."
+- **GCS-based neurological system** (`afcm_neuro`) — tracks eye/verbal/motor response (see
+  TERMINOLOGY.md §5 for the standard GCS component definitions) as an actual derived state (from
+  blood loss, hypoxia from airway compromise, head injury, drug effects — e.g. ketamine
+  dissociation or fentanyl sedation lowering verbal/eye score), and **that GCS state suppresses
+  voice projection through TFAR/ACRE2** when integrated (TERMINOLOGY.md §7) — a patient with a
+  depressed verbal score should be mechanically unable to communicate clearly over radio/proximity
+  voice, not just visually tagged as "unconscious."
 - **Stress-linked performance matrix** (`afcm_stress`) — the *medic's* stress state (under fire,
   time pressure, mass-casualty load) degrades their own performance: e.g. procedure time, hand
   steadiness/dosing precision, or task failure chance. This is explicitly about the treater, not
@@ -190,6 +194,12 @@ AFCM/
 5. **UI approach** — same native-dialog-first decision AFCM-Simulator made applies here by default,
    but worth confirming AFCM's own treatment UI (`afcm_ui`) is in scope for this repo rather than
    assumed to be supplied by AFCM-Simulator.
+6. **Terminology accuracy vs. marketing framing** — TERMINOLOGY.md only independently confirms one
+   piece of AFCM-specific ADF doctrine (the CASEVAC/MEDEVAC platform-protection distinction, from a
+   JMVH article). The triage categories, Role 1/2/3, MARCH/PAWS, 9-Liner, and MIST report are all
+   flagged there as **[NATO/US-common]**, not confirmed ADF-published — near-certainly applicable,
+   but the README's "authentic ADF and RAAMC trauma doctrine" framing should either get a real ADF
+   source for these before shipping, or soften the claim to "NATO-aligned" where unconfirmed.
 
 ---
 

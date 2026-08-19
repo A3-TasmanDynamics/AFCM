@@ -5,12 +5,6 @@
       <stop offset="55%" stop-color="#1c2e20"/>
       <stop offset="100%" stop-color="#241814"/>
     </linearGradient>
-    <linearGradient id="ecg-fade" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#c1272d" stop-opacity="0"/>
-      <stop offset="15%" stop-color="#e2483e" stop-opacity="1"/>
-      <stop offset="85%" stop-color="#e2483e" stop-opacity="1"/>
-      <stop offset="100%" stop-color="#c1272d" stop-opacity="0"/>
-    </linearGradient>
     <radialGradient id="vignette" cx="50%" cy="42%" r="65%">
       <stop offset="0%" stop-color="#000000" stop-opacity="0"/>
       <stop offset="100%" stop-color="#000000" stop-opacity="0.35"/>
@@ -22,11 +16,6 @@
 
   <!-- Ring -->
   <circle cx="512" cy="440" r="300" fill="none" stroke="#3a4a3c" stroke-width="6" opacity="0.55"/>
-
-  <!-- ECG trace arcing behind the cross -->
-  <path d="M132,440 L330,440 L364,440 L382,370 L412,520 L440,300 L466,440 L512,440
-           L558,440 L604,300 L632,520 L662,370 L680,440 L714,440 L892,440"
-        fill="none" stroke="url(#ecg-fade)" stroke-width="14" stroke-linejoin="round" stroke-linecap="round"/>
 
   <!-- Red cross emblem -->
   <g transform="translate(512,440)">

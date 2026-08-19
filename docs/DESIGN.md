@@ -174,7 +174,11 @@ AFCM/
 
 1. **Clinical reference values** — actual dosing, onset/duration curves, and threshold values for
    Ketamine/Penthrox/Fentanyl/Calcium Gluconate need a real ADF/RAAMC-aligned reference before
-   they're hardcoded; this doc intentionally does not invent numbers.
+   they're hardcoded; this doc intentionally does not invent numbers. See
+   [docs/REFERENCES.md](REFERENCES.md) for the source set to work from — no public ADF-P-Health/
+   RAAMC doctrine document was found, so the strongest available sources are Therapeutic
+   Guidelines/Australian Prescriber (Australian-context prescribing) and ATMA/JMVH (Australian
+   tactical-medicine framing); real ADF-affiliated SME input would beat all of them.
 2. **TFAR/ACRE2 API** — needs the current public function list from each mod confirmed before
    `afcm_neuro`'s comms hook is designed in detail; assumed-feasible here, not verified.
 3. **Where does the comms-compat layer live?** — a dedicated `afcm_comms_compat` addon (loads only

@@ -8,6 +8,9 @@ Consumed by: AFCM-Simulator (scenario authoring/UI tool — see that repo's own 
 Terminology: [docs/TERMINOLOGY.md](TERMINOLOGY.md) — canonical definitions for every clinical,
 tactical-medicine, and radio-callings term used below; use it rather than re-defining terms
 ad hoc in future doc updates.
+SME review: [docs/ADF_SME_QUESTIONS.md](ADF_SME_QUESTIONS.md) — standalone question list for a
+real ADF/RAAMC member to review; consolidates every open terminology/pharmacology/equipment
+question below into one shareable doc.
 
 ---
 

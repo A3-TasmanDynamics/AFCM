@@ -123,7 +123,7 @@ PatientState = {
     gcs: { eye: 1..4, verbal: 1..5, motor: 1..6 },
     airway_patency:      Number,   // 0..1
     active_drugs: [ { agent, dose, administeredAt, route } ],
-    bleeds: [ { site, rate, external: Bool } ],  // rate is itself a function of coag_factor, not fixed at wound time
+    bleeds: [ { site: LimbId, rate, external: Bool } ],  // rate is itself a function of coag_factor, not fixed at wound time
     cardiac_rhythm: Enum,       // e.g. perfusing / VF / pulseless-VT / PEA / asystole — derived, not directly set
     shockable: Bool             // derived from cardiac_rhythm; gates whether LIFEPAK-style defibrillation can act
 }
@@ -137,6 +137,28 @@ MedicState = {
 Coagulation factor, bleed rate, and GCS are explicitly **derived**, not stored-and-edited directly
 — that's what keeps the triad "an engine" instead of three separate sliders a medic (or a
 mission/preset author) can just set.
+
+### 3.1 `LimbId` — wound siting
+
+`site` above (and any future per-region field — hitpoint damage, splinting state, etc.) uses
+**AFCM-Simulator's `LimbId` vocabulary**, not a separate AFCM-only body-region scheme. 13 real
+anatomical regions — canonical definition and full mapping tables live in AFCM-Simulator's
+[INJURY_CODES.md §1](https://github.com/A3-TasmanDynamics/AFCM-Simulator/blob/main/docs/INJURY_CODES.md#1-body-parts--limbid)
+(mirrored here for convenience — that doc is the source of truth if the two ever drift):
+
+```
+head, neck, chest, abdomen, pelvis,
+leftUpperArm, leftForearm, rightUpperArm, rightForearm,
+leftThigh, leftShin, rightThigh, rightShin
+```
+
+This is a deliberate choice, not an accident of two teams landing on the same names independently:
+AFCM's own `PatientState.bleeds[].site` and AFCM-Simulator's `Injury.limb` (its
+[DESIGN.md §4.1](https://github.com/A3-TasmanDynamics/AFCM-Simulator/blob/main/docs/DESIGN.md#41-body-limb-selection))
+need to be **the same value space** — otherwise `afcm_sim_afcm_compat` (§6 below) would need its
+own translation layer between two different limb vocabularies, on top of the state-mutation API
+call itself. Sharing `LimbId` means that translation layer doesn't need to exist: AFCM-Simulator
+passes a `LimbId` straight through to AFCM's state-mutation API, unchanged.
 
 ---
 
@@ -181,6 +203,9 @@ repo. With AFCM now existing as a standalone engine:
 - AFCM-Simulator's "apply an injury to a patient" action should call into **AFCM's own state-
   mutation API** (an entry point that sets initial `bleeds`/trauma state on a `PatientState`) as
   its primary target, rather than translating into ACE3 hitpoint damage.
+- That state-mutation API's site parameter is `LimbId` (§3.1) — AFCM adopts AFCM-Simulator's
+  vocabulary directly rather than defining its own, so `afcm_sim_afcm_compat` never needs a
+  translation layer between two different body-region schemes.
 - ACE3/KAT/ACM compatibility (mentioned in AFCM-Simulator's README) becomes an **optional
   secondary bridge** for servers not running AFCM at all — lower priority than the AFCM-native
   path, and should not shape AFCM's own data model (§3) to accommodate ACE3/KAT concepts like

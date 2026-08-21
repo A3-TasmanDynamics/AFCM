@@ -166,6 +166,7 @@ Keeps code/docs/UI consistent — see AFCM DESIGN.md for full definitions, this 
 
 | Term | Meaning | Status |
 |---|---|---|
+| **`LimbId`** | The 13-region anatomical body-siting vocabulary shared by AFCM (`PatientState.bleeds[].site`) and AFCM-Simulator (`Injury.limb`) — see [AFCM-Simulator/docs/INJURY_CODES.md §1](https://github.com/A3-TasmanDynamics/AFCM-Simulator/blob/main/docs/INJURY_CODES.md#1-body-parts--limbid) for the canonical list | **[Shared/Technical]** |
 | **MASCAL** | Mass casualty (incident) — multiple simultaneous patients exceeding routine care capacity | **[NATO/US-common]** |
 | **Injury preset** | A named, reusable, pre-authored set of injuries applicable to a spawned patient | **[Gameplay-only]** |
 | **Injury level** (Easy/Medium/Hard/Extreme/F*CKED!) | AFCM-Simulator's randomization-difficulty scale — **not** a triage category, see the §2 warning | **[Gameplay-only]** |

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinical Anatomy Interactive Map</title>
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --panel-bg: rgba(17, 24, 39, 0.9);
+            --border-color: #1e3a8a;
+            --accent-glow: #00f0ff;
+            --select-color: #10b981;
+            --text-main: #f9fafb;
+            --text-sub: #9ca3af;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            color: var(--accent-glow);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        p {
+            color: var(--text-sub);
+            font-size: 0.9rem;
+        }
+
+        .workspace {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+            align-items: flex-start;
+            max-width: 900px;
+            width: 100%;
+        }
+
+        /* Anatomy Image Viewport Container */
+        .image-container {
+            position: relative;
+            width: 360px;
+            max-width: 100%;
+            aspect-ratio: 1 / 1.65;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* SVG Overlay matches image dimensions precisely */
+        svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Interactive Zone Styling */
+        .body-part {
+            fill: rgba(0, 240, 255, 0.0);
+            stroke: rgba(0, 240, 255, 0.15);
+            stroke-width: 1;
+            cursor: pointer;
+            transition: fill 0.2s ease, stroke 0.2s ease;
+        }
+
+        .body-part:hover {
+            fill: rgba(0, 240, 255, 0.25);
+            stroke: rgba(0, 240, 255, 0.8);
+            stroke-width: 1.5;
+        }
+
+        .body-part.selected {
+            fill: rgba(16, 185, 129, 0.35) !important;
+            stroke: #10b981 !important;
+            stroke-width: 2.5 !important;
+        }
+
+        /* Clinical Info Panel */
+        .info-panel {
+            flex: 1;
+            min-width: 280px;
+            max-width: 380px;
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            background: rgba(0, 240, 255, 0.1);
+            color: var(--accent-glow);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            border-radius: 20px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 14px;
+        }
+
+        .info-group {
+            margin-bottom: 16px;
+        }
+
+        .label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--text-sub);
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .latin {
+            font-family: Georgia, serif;
+            font-style: italic;
+            color: #34d399;
+        }
+
+        .description {
+            font-size: 0.85rem;
+            color: #d1d5db;
+            line-height: 1.5;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 12px;
+            margin-top: 12px;
+        }
+
+        #error-msg {
+            display: none;
+            position: absolute;
+            inset: 0;
+            background: #111;
+            color: #ef4444;
+            padding: 20px;
+            text-align: center;
+            font-size: 0.85rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Anatomy Region Selector</h1>
+        <p>Click any anatomical section for clinical terminology</p>
+    </header>
+
+    <div class="workspace">
+        <!-- Image & Precise SVG Interactive Layer -->
+        <div class="image-container">
+            <img src="image_f1252e.png" alt="Anatomy Body Base" onerror="this.style.display='none'; document.getElementById('error-msg').style.display='flex';">
+            
+            <div id="error-msg">
+                ⚠️ Image "image_f1252e.png" not found.<br><br>Please ensure it is saved in the exact same folder as this HTML file.
+            </div>
+
+            <svg viewBox="0 0 500 800" preserveAspectRatio="none">
+                <!-- Head & Sensory Elements -->
+                <polygon class="body-part" data-name="Head" data-latin="Caput" data-region="Cranial Region" data-desc="Contains cranium, facial structure, sensory organs, and encephalon." points="215,35 285,35 290,75 285,110 215,110 210,75" />
+                <polygon class="body-part" data-name="Right Ear" data-latin="Auris Dextra" data-region="Cephalic Region" data-desc="Right external pinna and auditory structure." points="210,70 198,75 202,90 210,85" />
+                <polygon class="body-part" data-name="Left Ear" data-latin="Auris Sinistra" data-region="Cephalic Region" data-desc="Left external pinna and auditory structure." points="290,70 302,75 298,90 290,85" />
+
+                <!-- Throat / Neck -->
+                <polygon class="body-part" data-name="Throat / Neck" data-latin="Cervix / Collum" data-region="Cervical Region" data-desc="Encompasses pharynx, larynx, trachea, and cervical vertebrae." points="225,110 275,110 280,140 220,140" />
+
+                <!-- Thorax & Abdomen -->
+                <polygon class="body-part" data-name="Upper Chest" data-latin="Thorax / Pectoralis" data-region="Thoracic Region" data-desc="Rib cage, sternum, pectoral muscles, and cardiopulmonary cavities." points="195,140 305,140 320,220 180,220" />
+                <polygon class="body-part" data-name="Lower Chest & Abdomen" data-latin="Abdomen" data-region="Abdominal Region" data-desc="Rectus abdominis, epigastric, umbilical, and gastrointestinal viscera." points="180,220 320,220 310,340 190,340" />
+                <polygon class="body-part" data-name="Pelvic Region" data-latin="Pelvis / Inguinal" data-region="Pelvic Region" data-desc="Pelvic bone structure, iliac crests, and pubic symphysis." points="190,340 310,340 305,390 195,390" />
+
+                <!-- Upper Limbs -->
+                <polygon class="body-part" data-name="Right Upper Arm" data-latin="Brachium Dextrum" data-region="Right Upper Extremity" data-desc="Humerus, deltoid, and biceps brachii muscle group." points="175,145 120,155 105,275 145,285 175,215" />
+                <polygon class="body-part" data-name="Right Lower Arm" data-latin="Antebrachium Dextrum" data-region="Right Upper Extremity" data-desc="Radius, ulna, and forearm flexor/extensor compartments." points="105,275 145,285 130,420 95,410" />
+                <polygon class="body-part" data-name="Right Hand" data-latin="Manus Dextra" data-region="Right Upper Extremity" data-desc="Carpals, metacarpals, phalanges, and palmar structures." points="95,410 130,420 135,485 90,475" />
+
+                <polygon class="body-part" data-name="Left Upper Arm" data-latin="Brachium Sinistrum" data-region="Left Upper Extremity" data-desc="Humerus, deltoid, and biceps brachii muscle group." points="325,145 380,155 395,275 355,285 325,215" />
+                <polygon class="body-part" data-name="Left Lower Arm" data-latin="Antebrachium Sinistrum" data-region="Left Upper Extremity" data-desc="Radius, ulna, and forearm flexor/extensor compartments." points="395,275 355,285 370,420 405,410" />
+                <polygon class="body-part" data-name="Left Hand" data-latin="Manus Sinistra" data-region="Left Upper Extremity" data-desc="Carpals, metacarpals, phalanges, and palmar structures." points="405,410 370,420 365,485 410,475" />
+
+                <!-- Lower Limbs -->
+                <polygon class="body-part" data-name="Right Thigh" data-latin="Femur Dextrum" data-region="Right Lower Extremity" data-desc="Femur, quadriceps femoris, and hamstring muscle groups." points="248,390 195,390 180,520 215,530 248,460" />
+                <polygon class="body-part" data-name="Right Lower Leg" data-latin="Crus Dextrum" data-region="Right Lower Extremity" data-desc="Tibia, fibula, and calf muscle complex (gastrocnemius/soleus)." points="215,530 180,520 190,710 230,710" />
+                <polygon class="body-part" data-name="Right Foot" data-latin="Pes Dexter" data-region="Right Lower Extremity" data-desc="Tarsals, metatarsals, phalanges, and plantar arch." points="230,710 190,710 185,780 240,780" />
+
+                <polygon class="body-part" data-name="Left Thigh" data-latin="Femur Sinistrum" data-region="Left Lower Extremity" data-desc="Femur, quadriceps femoris, and hamstring muscle groups." points="252,390 305,390 320,520 285,530 252,460" />
+                <polygon class="body-part" data-name="Left Lower Leg" data-latin="Crus Sinistrum" data-region="Left Lower Extremity" data-desc="Tibia, fibula, and calf muscle complex (gastrocnemius/soleus)." points="285,530 320,520 310,710 270,710" />
+                <polygon class="certain body-part" data-name="Left Foot" data-latin="Pes Sinister" data-region="Left Lower Extremity" data-desc="Tarsals, metatarsals, phalanges, and plantar arch." points="270,710 310,710 315,780 260,780" />
+            </svg>
+        </div>
+
+        <!-- Diagnostic Output Panel -->
+        <div class="info-panel">
+            <span class="badge">Diagnostic Information</span>
+            
+            <div class="info-group">
+                <div class="label">Selected Region</div>
+                <div id="info-name" class="value">None selected</div>
+            </div>
+
+            <div class="info-group">
+                <div class="label">Clinical / Latin Term</div>
+                <div id="info-latin" class="value latin">—</div>
+            </div>
+
+            <div class="info-group">
+                <div class="label">Anatomical Category</div>
+                <div id="info-region" class="value" style="font-size: 0.95rem; color: #60a5fa;">—</div>
+            </div>
+
+            <div id="info-desc" class="description">
+                Click on any part of the body figure (head, ears, throat, chest, upper arms, forearms, hands, thighs, lower legs, or feet) to review medical classifications and clinical attributes.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const parts = document.querySelectorAll('.body-part');
+        const infoName = document.getElementById('info-name');
+        const infoLatin = document.getElementById('info-latin');
+        const infoRegion = document.getElementById('info-region');
+        const infoDesc = document.getElementById('info-desc');
+
+        parts.forEach(part => {
+            part.addEventListener('click', () => {
+                // Clear existing selections
+                parts.forEach(p => p.classList.remove('selected'));
+                
+                // Highlight clicked element
+                part.classList.add('selected');
+
+                // Populate panel with dataset attributes
+                infoName.textContent = part.dataset.name;
+                infoLatin.textContent = part.dataset.latin;
+                infoRegion.textContent = part.dataset.region;
+                infoDesc.textContent = part.dataset.desc;
+            });
+        });
+    </script>
+
+</body>
+</html>

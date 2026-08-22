@@ -5,6 +5,12 @@
       <stop offset="55%" stop-color="#1c2e20"/>
       <stop offset="100%" stop-color="#241814"/>
     </linearGradient>
+    <linearGradient id="ecg-fade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c1272d" stop-opacity="0"/>
+      <stop offset="15%" stop-color="#e2483e" stop-opacity="1"/>
+      <stop offset="85%" stop-color="#e2483e" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#c1272d" stop-opacity="0"/>
+    </linearGradient>
     <radialGradient id="vignette" cx="50%" cy="45%" r="65%">
       <stop offset="0%" stop-color="#000000" stop-opacity="0"/>
       <stop offset="100%" stop-color="#000000" stop-opacity="0.35"/>
@@ -16,10 +22,8 @@
 
   <circle cx="256" cy="256" r="180" fill="none" stroke="#3a4a3c" stroke-width="4" opacity="0.55"/>
 
-  <g transform="translate(256,256)">
-    <rect x="-96" y="-30" width="192" height="60" fill="#c1272d" rx="10"/>
-    <rect x="-30" y="-96" width="60" height="192" fill="#c1272d" rx="10"/>
-    <rect x="-96" y="-30" width="192" height="60" fill="none" stroke="#8f1a1f" stroke-width="3" rx="10"/>
-    <rect x="-30" y="-96" width="60" height="192" fill="none" stroke="#8f1a1f" stroke-width="3" rx="10"/>
-  </g>
+  <!-- ECG trace, matching logo.svg's finalized design (no cross) -->
+  <path d="M93,256 L165,256 L176,256 L186,235 L203,289 L220,217 L237,256 L256,256
+           L275,256 L292,217 L309,289 L326,235 L336,256 L347,256 L419,256"
+        fill="none" stroke="url(#ecg-fade)" stroke-width="10" stroke-linejoin="round" stroke-linecap="round"/>
 </svg>

@@ -21,12 +21,21 @@
   <rect width="1024" height="1024" rx="140" fill="url(#vignette)"/>
 
   <!-- Ring -->
-  <circle cx="512" cy="440" r="300" fill="none" stroke="#3a4a3c" stroke-width="6" opacity="0.55"/>
+  <circle cx="512" cy="400" r="300" fill="none" stroke="#3a4a3c" stroke-width="6" opacity="0.55"/>
 
-  <!-- ECG trace: the sole emblem, centered in the ring at full visual weight (no cross) -->
-  <path d="M240,440 L360,440 L378,440 L396,405 L424,495 L452,375 L480,440 L512,440
-           L544,440 L572,375 L600,495 L628,405 L646,440 L664,440 L784,440"
-        fill="none" stroke="url(#ecg-fade)" stroke-width="16" stroke-linejoin="round" stroke-linecap="round"/>
+  <!-- Red cross emblem, shifted up to leave the lower ring clear for the ECG strip -->
+  <g transform="translate(512,370)">
+    <rect x="-130" y="-40" width="260" height="80" fill="#c1272d" rx="14"/>
+    <rect x="-40" y="-130" width="80" height="260" fill="#c1272d" rx="14"/>
+    <rect x="-130" y="-40" width="260" height="80" fill="none" stroke="#8f1a1f" stroke-width="4" rx="14"/>
+    <rect x="-40" y="-130" width="80" height="260" fill="none" stroke="#8f1a1f" stroke-width="4" rx="14"/>
+  </g>
+
+  <!-- ECG trace: a monitor strip along the lower ring, clear of the cross so it reads as a
+       heartbeat line rather than wrapping around the emblem -->
+  <path d="M270,610 L390,610 L406,610 L422,580 L444,650 L466,570 L488,610 L512,610
+           L536,610 L558,570 L580,650 L602,580 L618,610 L634,610 L754,610"
+        fill="none" stroke="url(#ecg-fade)" stroke-width="10" stroke-linejoin="round" stroke-linecap="round"/>
 
   <!-- Wordmark -->
   <text x="512" y="838" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="160"
